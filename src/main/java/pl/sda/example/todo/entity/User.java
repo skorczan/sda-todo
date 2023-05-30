@@ -16,6 +16,8 @@ public class User {
 
     private String login;
 
+    private String passwordHash;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<ToDo> tasks;
 }
