@@ -1,8 +1,6 @@
 package pl.sda.example.todo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -10,6 +8,7 @@ import lombok.Data;
 public class ToDo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
