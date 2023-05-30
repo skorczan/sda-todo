@@ -16,6 +16,6 @@ public class ToDo {
 
     private String details;
 
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = false)
     private User owner;
 }
