@@ -7,7 +7,6 @@ import pl.sda.example.todo.api.ToDoDto;
 import pl.sda.example.todo.entity.ToDo;
 
 @Component
-@Transactional
 public class ToDoConverter {
 
     public ToDoDto map(ToDo entity) {
@@ -15,7 +14,7 @@ public class ToDoConverter {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setDetails(entity.getDetails());
-//        dto.setOwnerId(entity.getOwner().getId());
+        dto.setOwnerId(entity.getOwner().getId());
         return dto;
     }
 }

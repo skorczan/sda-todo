@@ -4,12 +4,14 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import pl.sda.example.todo.api.CreateTodoDto;
 import pl.sda.example.todo.entity.User;
 import pl.sda.example.todo.entity.UserRepository;
 import pl.sda.example.todo.service.ToDoService;
 
+@Profile("demo")
 @Component
 @Transactional
 @RequiredArgsConstructor
