@@ -16,12 +16,15 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> {
+//            requests.anyRequest().permitAll();
             requests.requestMatchers("/tasks/**", "/users/**").authenticated();
-            requests.requestMatchers("/h2-console/**").anonymous();
+            requests.requestMatchers("/h2-console", "/h2-console/**").``````permitAll();
         });
 
         http.csrf(csrf -> {
-            csrf.disable();
+            csrf
+                    .ignoringRequestMatchers("/h2-console", "/h2-console/**")
+                    .disable();
         });
 
         http.cors(cors -> {
@@ -36,7 +39,7 @@ public class SecurityConfiguration {
             headers.frameOptions(frameOptions -> frameOptions.disable());
         });
 
-        http.httpBasic(httpBasic -> {});
+         http.httpBasic(httpBasic -> {});
 
         return http.build();
     }

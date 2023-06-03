@@ -2,9 +2,9 @@ package pl.sda.example.todo.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Set;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    Set<User> findByLogin(String login);
+    Optional<User> findByLogin(String login);
 }
