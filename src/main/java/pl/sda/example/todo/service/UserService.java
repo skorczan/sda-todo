@@ -3,6 +3,8 @@ package pl.sda.example.todo.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.example.todo.api.UserDto;
@@ -24,6 +26,10 @@ public class UserService {
 
     public Optional<UserDto> getOne(int id) {
         return repository.findById(id).map(converter::map);
+    }
+
+    public Page<UserDto> find(PageRequest page) {
+        return repository.findAll(page).map(converter::map);
     }
 
     public UserDto register(String username, String password) {

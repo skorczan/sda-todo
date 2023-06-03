@@ -17,8 +17,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> {
 //            requests.anyRequest().permitAll();
-            requests.requestMatchers("/tasks/**", "/users/**").authenticated();
-            requests.requestMatchers("/h2-console", "/h2-console/**").``````permitAll();
+            requests.requestMatchers("/tasks", "/tasks/**").hasAuthority("USER");
+            requests.requestMatchers("/users", "/users/**").hasAuthority("USER");
+            requests.requestMatchers("/h2-console", "/h2-console/**").permitAll();
         });
 
         http.csrf(csrf -> {
